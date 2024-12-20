@@ -1,4 +1,5 @@
 # The-Hobbit
+
 Index.html: This is the website's homepage. It welcomes the user to a world of Hobbit, where they can explore the maps play
 games and the hobbit or even understand the characters in depth about their personal stories.
 
@@ -10,9 +11,10 @@ Map.html: This gives you a complete map of Middle-Earth, used not only in The Ho
 
 Games.html: This page hosts an RPG adventure game that follows the journey of Bilbo with the events that happened throughout the book and if played right you would win it.
 
-
 Hello Professor, hope you are doing well. I have added a GitHub zip file that I have a Git link for but since I couldn't add it anywhere here it is:
 https://github.com/Rajwardhan-Kute/Hobi.git
 
-To run the code here are the steps:
-Downaload the files and open any editor of your choice and run the index.html file on a live server as that is the main page to start with. I will add screen shots in the submission so there is a visual uinderstanding of how the website looks before actyakky runnoing iut.
+To run the website use the following link:
+https://hobbitfanpage.netlify.app
+
+Hope you enjoy the journey into the world of Middle Earth with no one but Bilbo himself!!
