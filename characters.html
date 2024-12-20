@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hobbit - Characters</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: hwb(0 0% 100%);
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1b1b1b;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #45a049;
+        }
+
+        .sidebar a {
+            color: #f4f4f4;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #4CAF50;
+        }
+
+        .content {
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        .content.open {
+            margin-left: 250px;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        .character {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .character:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .character img {
+            width: 150px;
+            height: 200px;
+            border-radius: 5px;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+
+        .character-info {
+            flex: 1;
+        }
+
+        .character-info h3 {
+            margin: 0 0 10px 0;
+            color: #4CAF50;
+        }
+
+        .character-info p {
+            margin: 5px 0;
+        }
+
+        .character-info button {
+            padding: 8px 15px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .character-info button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Home</a>
+        <a href="games.html">Play the RPG</a>
+        <a href="map.html">Explore the Map</a>
+        <a href="characters.html">Meet the Characters</a>
+        <a href="lore.html">Hobbit Lore</a>
+    </div>
+
+    <header>
+        <h1>The Characters of The Hobbit</h1>
+    </header>
+
+    <main>
+        <div class="character">
+            <img src="images/bilbo.webp" alt="Bilbo Baggins">
+            <div class="character-info">
+                <h3>Bilbo Baggins</h3>
+                <p><strong>Race:</strong> Hobbit</p>
+                <p><strong>Description:</strong> Bilbo is the protagonist of The Hobbit, a reluctant adventurer who proves himself brave and resourceful during the journey with Thorin's company.</p>
+                <p><strong>Role:</strong> Burglar for Thorin's company, finder of the One Ring.</p>
+                <button onclick="alert('Bilbo Baggins: The unlikely hero of The Hobbit!')">More Info</button>
+            </div>
+        </div>
+
+        <div class="character">
+            <img src="images/Gandalf.jpeg" alt="Gandalf">
+            <div class="character-info">
+                <h3>Gandalf</h3>
+                <p><strong>Race:</strong> Maia (Wizard)</p>
+                <p><strong>Description:</strong> Gandalf is a wise and powerful wizard who guides Thorin's company through many perils, using his magic and wisdom to overcome challenges.</p>
+                <p><strong>Role:</strong> Guide and protector of Thorin's company.</p>
+                <button onclick="alert('Gandalf: The wise wizard who orchestrates the quest!')">More Info</button>
+            </div>
+        </div>
+
+        <div class="character">
+            <img src="images/Thorin oak.png" alt="Thorin Oakenshield">
+            <div class="character-info">
+                <h3>Thorin Oakenshield</h3>
+                <p><strong>Race:</strong> Dwarf</p>
+                <p><strong>Description:</strong> Thorin is the leader of the company and heir to the throne under the Lonely Mountain. He is determined to reclaim his homeland and treasure from Smaug.</p>
+                <p><strong>Role:</strong> Leader of Thorin's company.</p>
+                <button onclick="alert('Thorin Oakenshield: A brave yet proud leader!')">More Info</button>
+            </div>
+        </div>
+
+        <div class="character">
+            <img src="images/Smaug.avif" alt="Smaug">
+            <div class="character-info">
+                <h3>Smaug</h3>
+                <p><strong>Race:</strong> Dragon</p>
+                <p><strong>Description:</strong> Smaug is the fearsome dragon who has taken over the Lonely Mountain and guards its vast treasure hoard.</p>
+                <p><strong>Role:</strong> Antagonist of the story.</p>
+                <button onclick="alert('Smaug: The mighty dragon of Erebor!')">More Info</button>
+            </div>
+        </div>
+
+        <div class="character">
+            <img src="images/Bard.jpg" alt="Bard the Bowman">
+            <div class="character-info">
+                <h3>Bard the Bowman</h3>
+                <p><strong>Race:</strong> Human</p>
+                <p><strong>Description:</strong> Bard is a brave archer from Lake-town who plays a critical role in slaying Smaug and defending his people.</p>
+                <p><strong>Role:</strong> Hero of Lake-town.</p>
+                <button onclick="alert('Bard the Bowman: The dragon-slaying hero!')">More Info</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 The Hobbit Fan Page. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            sidebar.classList.toggle('open');
+            content.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

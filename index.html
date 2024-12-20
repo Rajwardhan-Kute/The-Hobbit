@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hobbit Fan Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #111;
+            color: #f4f4f4;
+            margin: 0;
+            display: flex;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1b1b1b;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #45a049;
+        }
+
+        .sidebar a {
+            color: #f4f4f4;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #4CAF50;
+        }
+
+        .content {
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        .content.open {
+            margin-left: 250px;
+        }
+
+        header {
+            background-image: url('images/middle-earth-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 50px 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        main h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .card h3 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #ddd;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Home</a>
+        <a href="games.html">Play the RPG</a>
+        <a href="map.html">Explore the Map</a>
+        <a href="characters.html">Meet the Characters</a>
+        <a href="lore.html">Hobbit Lore</a>
+    </div>
+
+    <div class="content" id="content">
+        <header>
+            <h1>Welcome to The Hobbit Fan Page</h1>
+            <p>Your journey through Middle-earth begins here!</p>
+        </header>
+
+        <main>
+            <h2>Discover The World of The Hobbit</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Bilbo's Journey</h3>
+                    <p>Follow the incredible journey of Bilbo Baggins as he transforms from a simple hobbit to a hero of Middle-earth.</p>
+                    <a href="games.html">Learn More</a>
+                </div>
+                <div class="card">
+                    <h3>Interactive Map</h3>
+                    <p>Explore the vast world of Middle-earth with an interactive map that brings the story to life.</p>
+                    <a href="map.html">Explore the Map</a>
+                </div>
+                <div class="card">
+                    <h3>The Characters</h3>
+                    <p>Learn more about the brave, wise, and sometimes mischievous characters from The Hobbit.</p>
+                    <a href="characters.html">Meet the Characters</a>
+                </div>
+                <div class="card">
+                    <h3>Hobbit Lore</h3>
+                    <p>Delve into the history, legends, and mysteries of Middle-earth.</p>
+                    <a href="lore.html">Learn More</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 The Hobbit Fan Page. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            sidebar.classList.toggle('open');
+            content.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbit Lore</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #111;
+            color: #f4f4f4;
+            margin: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1b1b1b;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #45a049;
+        }
+
+        .sidebar a {
+            color: #f4f4f4;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #4CAF50;
+        }
+
+        .content {
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        .content.open {
+            margin-left: 250px;
+        }
+
+        header {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            line-height: 1.6;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        .timeline {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline li {
+            margin: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Home</a>
+        <a href="games.html">Play the RPG</a>
+        <a href="map.html">Explore the Map</a>
+        <a href="characters.html">Meet the Characters</a>
+        <a href="lore.html">Hobbit Lore</a>
+    </div>
+
+    <div class="content" id="content">
+        <header>
+            <h1>Hobbit Lore</h1>
+            <p>Explore the rich history and legends of Middle-earth.</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>The Creation of Middle-earth</h2>
+                <p>Middle-earth was created by Eru Ilúvatar and shaped by the Valar. It is home to Elves, Men, Dwarves, Hobbits, and other creatures.</p>
+            </section>
+
+            <section>
+                <h2>Timeline of Key Events</h2>
+                <ul class="timeline">
+                    <li><strong>Year 2770:</strong> Smaug takes Erebor from the Dwarves.</li>
+                    <li><strong>Year 2941:</strong> Bilbo begins his adventure with Thorin's company.</li>
+                    <li><strong>Year 2941:</strong> The Battle of Five Armies occurs near Erebor.</li>
+                    <li><strong>Year 3019:</strong> The One Ring is destroyed, ending Sauron's reign.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Important Locations</h2>
+                <ul>
+                    <li><strong>Shire:</strong> The peaceful homeland of Hobbits.</li>
+                    <li><strong>Rivendell:</strong> A sanctuary for Elves, known for its beauty and wisdom.</li>
+                    <li><strong>Mirkwood:</strong> A dense, enchanted forest filled with dangers like spiders and darkness.</li>
+                    <li><strong>Lonely Mountain (Erebor):</strong> The home of Thorin's ancestors, later taken by Smaug.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Legends and Myths</h2>
+                <p>Discover the rich legends of Middle-earth, including the origins of Smaug, the lore of the One Ring, and the ancient Valar who shaped the world.</p>
+            </section>
+
+            <section>
+                <h2>Frequently Asked Questions</h2>
+                <ul>
+                    <li><strong>Who is Eru Ilúvatar?</strong> The supreme god of Arda, responsible for its creation.</li>
+                    <li><strong>What is the One Ring?</strong> A powerful ring created by Sauron to control Middle-earth.</li>
+                    <li><strong>What is the significance of the Battle of Five Armies?</strong> It represents the culmination of Thorin's quest and unites Elves, Men, and Dwarves against a common threat.</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 The Hobbit Fan Page. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            sidebar.classList.toggle('open');
+            content.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

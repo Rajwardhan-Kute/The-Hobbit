@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hobbit RPG</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #game {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #stats {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            margin: 5px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #inventory {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Hobbit RPG Adventure</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Embark on a Legendary Adventure</h2>
+            <p>Guide Bilbo Baggins through an epic journey filled with quests, battles, and encounters with friends and foes!</p>
+            <div id="game">
+                <p id="story"></p>
+                <div id="stats">
+                    <p><strong>Health:</strong> <span id="health">100</span></p>
+                    <p><strong>Gold:</strong> <span id="gold">0</span></p>
+                    <p><strong>Inventory:</strong> <span id="inventory">None</span></p>
+                </div>
+                <button id="option1"></button>
+                <button id="option2"></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let player = {
+            name: "Bilbo Baggins",
+            health: 100,
+            gold: 0,
+            inventory: []
+        };
+
+        function startGame() {
+            updateStats();
+            displayStory(1);
+        }
+
+        const storyNodes = {
+            1: {
+                text: "Bilbo wakes up in Bag End. Gandalf knocks on the door and offers him an adventure. Do you ACCEPT the adventure or DECLINE it?",
+                options: [
+                    { text: "Accept", nextNode: 2 },
+                    { text: "Decline", nextNode: 3 }
+                ]
+            },
+            2: {
+                text: "You join Thorin and Company. Your first challenge is to cross the Trollshaws where you meet 3 trolls. Do you HIDE or CONFRONT them?",
+                options: [
+                    { text: "Hide", nextNode: 4 },
+                    { text: "Confront", nextNode: 5 }
+                ]
+            },
+            3: {
+                text: "You chose to stay home. The adventure has ended before it began.",
+                options: []
+            },
+            4: {
+                text: "You successfully hide until Gandalf tricks the trolls into staying out until dawn, turning them to stone. You find gold and a sword!",
+                options: [
+                    { text: "Continue the journey", nextNode: 6 }
+                ],
+                effect: () => { player.gold += 50; player.inventory.push("Sting"); }
+            },
+            5: {
+                text: "The trolls capture you. Gandalf saves you, but you lose health in the scuffle.",
+                options: [
+                    { text: "Continue the journey", nextNode: 6 }
+                ],
+                effect: () => { player.health -= 20; }
+            },
+            6: {
+                text: "You reach Rivendell and meet Elrond who helps identify your sword as Sting. You gain an ally. Do you REST or CONTINUE the journey?",
+                options: [
+                    { text: "Rest", nextNode: 7 },
+                    { text: "Continue", nextNode: 8 }
+                ]
+            },
+            7: {
+                text: "You rest and regain health.",
+                options: [
+                    { text: "Continue the journey", nextNode: 8 }
+                ],
+                effect: () => { player.health += 20; }
+            },
+            8: {
+                text: "You enter the Misty Mountains and are captured by goblins. Do you FIGHT or ESCAPE?",
+                options: [
+                    { text: "Fight", nextNode: 9 },
+                    { text: "Escape", nextNode: 10 }
+                ]
+            },
+            9: {
+                text: "You fight bravely but lose health. You find gold in the goblin cave.",
+                options: [
+                    { text: "Continue", nextNode: 11 }
+                ],
+                effect: () => { player.health -= 30; player.gold += 20; }
+            },
+            10: {
+                text: "You sneak past the goblins and find Gollum. Do you SOLVE his riddle or ATTACK him?",
+                options: [
+                    { text: "Solve riddle", nextNode: 12 },
+                    { text: "Attack", nextNode: 13 }
+                ]
+            },
+            11: {
+                text: "You escape the Misty Mountains and continue your journey.",
+                options: [
+                    { text: "Continue", nextNode: 14 }
+                ]
+            },
+            12: {
+                text: "You solve Gollum's riddles and find the One Ring. Your stealth increases!",
+                options: [
+                    { text: "Continue", nextNode: 14 }
+                ],
+                effect: () => { player.inventory.push("The One Ring"); }
+            },
+            13: {
+                text: "You attack Gollum but he escapes. You continue your journey empty-handed.",
+                options: [
+                    { text: "Continue", nextNode: 14 }
+                ]
+            },
+            14: {
+                text: "You reach Mirkwood, where you must navigate through the forest. Do you FOLLOW the path or STRAY off the path?",
+                options: [
+                    { text: "Follow", nextNode: 15 },
+                    { text: "Stray", nextNode: 16 }
+                ]
+            },
+            15: {
+                text: "You successfully navigate through Mirkwood and arrive at the Lonely Mountain. Smaug awaits. Do you ENTER the lair or REST outside?",
+                options: [
+                    { text: "Enter", nextNode: 17 },
+                    { text: "Rest", nextNode: 18 }
+                ]
+            },
+            16: {
+                text: "You stray off the path and are attacked by spiders! You lose health but manage to escape.",
+                options: [
+                    { text: "Continue", nextNode: 15 }
+                ],
+                effect: () => { player.health -= 20; }
+            },
+            17: {
+                text: "You enter Smaug's lair. The dragon is massive and terrifying. Do you FIGHT or TRY TO STEAL his treasure?",
+                options: [
+                    { text: "Fight", nextNode: 19 },
+                    { text: "Steal", nextNode: 20 }
+                ]
+            },
+            18: {
+                text: "You rest outside the lair and regain health.",
+                options:
+                [
+                    { text: "Enter the lair", nextNode: 17 }
+                ],
+                effect: () => { player.health += 30; }
+            },
+            19: {
+                text: "You bravely fight Smaug. The battle is fierce, but you defeat the dragon and save Middle-earth!",
+                options: [],
+                effect: () => { player.gold += 500; }
+            },
+            20: {
+                text: "Smaug awakens and attacks you. You barely escape with your life but lose some health.",
+                options: [
+                    { text: "Continue", nextNode: 21 }
+                ],
+                effect: () => { player.health -= 50; }
+            },
+            21: {
+                text: "You leave Smaug's lair and join the Battle of Five Armies. You fight alongside Thorin and Gandalf. Do you CHARGE or DEFEND?",
+                options: [
+                    { text: "Charge", nextNode: 22 },
+                    { text: "Defend", nextNode: 23 }
+                ]
+            },
+            22: {
+                text: "Your bravery helps turn the tide of the battle, but you are injured.",
+                options: [
+                    { text: "Continue", nextNode: 24 }
+                ],
+                effect: () => { player.health -= 20; player.gold += 100; }
+            },
+            23: {
+                text: "Your defense strategy helps protect your allies, and you earn their respect.",
+                options: [
+                    { text: "Continue", nextNode: 24 }
+                ],
+                effect: () => { player.gold += 150; }
+            },
+            24: {
+                text: "The battle ends, and peace is restored. You return to the Shire as a hero.",
+                options: []
+            }
+        };
+
+        function displayStory(nodeId) {
+            const node = storyNodes[nodeId];
+            if (node.effect) node.effect();
+            updateStats();
+
+            document.getElementById('story').innerText = node.text;
+            const option1Button = document.getElementById('option1');
+            const option2Button = document.getElementById('option2');
+
+            option1Button.innerText = node.options[0]?.text || '';
+            option2Button.innerText = node.options[1]?.text || '';
+
+            option1Button.style.display = node.options[0] ? 'inline-block' : 'none';
+            option2Button.style.display = node.options[1] ? 'inline-block' : 'none';
+
+            option1Button.onclick = node.options[0] ? () => chooseOption(node.options[0].nextNode) : null;
+            option2Button.onclick = node.options[1] ? () => chooseOption(node.options[1].nextNode) : null;
+        }
+
+        function chooseOption(nextNodeId) {
+            displayStory(nextNodeId);
+        }
+
+        function updateStats() {
+            document.getElementById('health').innerText = player.health;
+            document.getElementById('gold').innerText = player.gold;
+            document.getElementById('inventory').innerText = player.inventory.length > 0 ? player.inventory.join(', ') : 'None';
+        }
+
+        window.onload = startGame;
+    </script>
+</body>
+</html>
