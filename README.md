@@ -11,10 +11,14 @@ Map.html: This gives you a complete map of Middle-Earth, used not only in The Ho
 
 Games.html: This page hosts an RPG adventure game that follows the journey of Bilbo with the events that happened throughout the book and if played right you would win it.
 
+In the submission you received you might be missing the images i used as i wanted them in a folder but we cannot post folders on canvas so i have not, but you can access all the used resources here.
+
 Hello Professor, hope you are doing well. I have added a GitHub zip file that I have a Git link for but since I couldn't add it anywhere here it is:
 https://github.com/Rajwardhan-Kute/Hobi.git
 
 To run the website use the following link:
 https://hobbitfanpage.netlify.app
 
-Hope you enjoy the journey into the world of Middle Earth with no one but Bilbo himself!!
+Thank You, Professor Green, for 2 great journeys over a span of 6 months and this is my way to thank you by taking you on the journey of Middle Earth with no one but Bilbo himself!! Hope you enjoy it. 
+
+Thank You once again.
